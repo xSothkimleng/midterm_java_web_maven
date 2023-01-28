@@ -1,6 +1,10 @@
 package com.hibernate.controller;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.persistence.Query;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +16,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.hibernate.model.Tip;
 import com.hibernate.model.User;
 
 /**
@@ -20,9 +25,9 @@ import com.hibernate.model.User;
 @WebServlet("/register")
 public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
 			// create user
 			String username = request.getParameter("username");
@@ -30,16 +35,16 @@ public class Register extends HttpServlet {
 			SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
-			
-		    User user = new User(username,password);
-		    session.persist(user);
-		    
-		    session.getTransaction().commit();
-		    response.sendRedirect("/");
-		}catch(Exception e) {
+
+			User user = new User(username, password);
+			session.persist(user);
+
+			session.getTransaction().commit();
+			response.sendRedirect("/");
+		} catch (Exception e) {
 			System.out.println("Error adding user");
 		}
-		
+
 	}
 
 }

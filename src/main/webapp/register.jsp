@@ -21,9 +21,9 @@
 
 		<div class="col-md-6 col-md-offset-3">
 
-			<%-- <div class="alert alert-success center" role="alert">
-				<p>${NOTIFICATION}</p>
-			</div> --%>
+			
+			
+			
 
 			<form action="register" method="post">
 

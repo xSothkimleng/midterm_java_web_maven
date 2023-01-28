@@ -43,7 +43,7 @@
 
 				<div class="form-group">
 					<label for="exampleHtmlEscape">Example:</label>
-					<textarea class="form-control" id="exampleHtmlEscape" rows="3"
+					<textarea class="form-control" id="exampleHtmlEscape" rows="10"
 						placeholder="Example HTML" name="exampleHtmlEscape" required></textarea>
 				</div>
 
@@ -54,9 +54,6 @@
 		</div>
 		
 	</div>
-
-
-
 
 	<jsp:include page="common/footer.jsp"></jsp:include>
 
