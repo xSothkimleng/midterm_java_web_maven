@@ -23,10 +23,19 @@
 
 		<div class="col-md-6 col-md-offset-3">
 
-			<%-- <div class="alert alert-success center" role="alert">
-				<p>${NOTIFICATION}</p>
-			</div> --%>
-
+			<%
+			if (request.getAttribute("loginStatus") != null) {
+				if (request.getAttribute("loginStatus") == "success") {
+			%>
+			<div class="alert alert-success center" role="alert">
+				<span>Successfully Login</span>
+			</div>
+			<% } else if (request.getAttribute("loginStatus") == "failed") { %>
+			<div class="alert alert-danger center" role="alert">
+				<span>Username or Password in invalid</span>
+			</div>
+			<%}}%>
+			
 			<form action="Login" method="post">
 
 				<div class="form-group">

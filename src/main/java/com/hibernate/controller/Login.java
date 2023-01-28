@@ -3,6 +3,7 @@ package com.hibernate.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,17 +40,16 @@ public class Login extends HttpServlet {
 			Query query = session.createQuery("from User where username=:username and password=:password");
 			query.setParameter("username", username);
 			query.setParameter("password", password);
-			System.out.println("here");
 			List<User> users = (List<User>)query.getResultList();
 			
 			if( users.size() > 0) {
-				System.out.println();
-//				System.out.println(query.getParameterValue(1));
-				sessionWeb.setAttribute("user_id", users.get(0).getAdmin_id());
+				sessionWeb.setAttribute("user_id",users.get(0).getAdmin_id());
 				sessionWeb.setAttribute("username",users.get(0).getUsername());
-				response.sendRedirect("home.jsp");
-			}else {
-				response.sendRedirect("login.jsp");
+				request.setAttribute("loginStatus", "success");
+				request.getRequestDispatcher("/").forward(request, response);
+			} else {
+				request.setAttribute("loginStatus", "failed");
+				request.getRequestDispatcher("/login.jsp").forward(request, response);
 			}
 			
 			session.getTransaction().commit();

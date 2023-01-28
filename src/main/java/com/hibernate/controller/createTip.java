@@ -21,11 +21,10 @@ public class createTip extends HttpServlet {
   
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		try {
 			// create tip
 			String title = request.getParameter("title");
-			String description = request.getParameter("Description");
+			String description = request.getParameter("description");
 			String htmlDetail = request.getParameter("exampleHtmlEscape");
 			SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 			Session session = sessionFactory.openSession();

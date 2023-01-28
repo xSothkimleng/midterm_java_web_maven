@@ -24,25 +24,34 @@
 		<div class="row">
 			<%
 			if (request.getAttribute("tips") != null) {
-			List<Tip> tips = (List<Tip>) (request.getAttribute("tips")); 
-			for (Tip tip : tips) {
+				List<Tip> tips = (List<Tip>) (request.getAttribute("tips"));
+				for (Tip tip : tips) {
 			%>
 			<div class="col-sm-3 mt-3">
 				<div class="card">
 					<div class="card-body">
-						<h5 class="card-title">Tip title</h5>
-						<p class="card-text">Tip description</p>
-						<a href="<%=request.getContextPath()%>/tipDetails.jsp"
-							class="btn btn-primary">Details</a>
+						<h5 class="card-title"><%=tip.getTitle()%></h5>
+						<p class="card-text"><%=tip.getDescription()%></p>
+						<form action="tipDetailPage" method="get">
+							<input value="<%=tip.getTip_id()%>" name="id" hidden/>
+							<a href="<%=request.getContextPath()%>/tipDetailPage">
+							<button type="submit" class="btn btn-primary">Details</button>
+							</a>
+						</form>
 					</div>
 				</div>
 			</div>
-			<% } }else{%>
+			<%
+			}
+			} else {
+			%>
 			<div class="col-sm-6 mt-3">
 				<h3>There is no any tip yet!</h3>
 			</div>
-			<% } %>
-			
+			<%
+			}
+			%>
+
 		</div>
 	</div>
 
