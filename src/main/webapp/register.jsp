@@ -22,9 +22,7 @@
 		<div class="col-md-6 col-md-offset-3">
 
 			
-			<div class="alert alert-danger center" role="alert">
-				<span>Username is taken</span>
-			</div>
+			
 			
 
 			<form action="register" method="post">
